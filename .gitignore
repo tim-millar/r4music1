@@ -11,3 +11,11 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore bundled gems
+/vendor/bundle
+
+# Ignore tag files
+GTAGS
+GRTAGS
+GPATH
