@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>R4music1</title>
+  <title><%= @page_title || "R4RMusic" %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <h1 class="banner">The R4R Music Store</h1>
 
-<%= yield %>
+  <%= yield %>
 
+  <hr/>
+  <p>Copyright &copy; 2016, R4RMusic</p>
 </body>
 </html>

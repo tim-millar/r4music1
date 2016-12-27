@@ -1,8 +1,8 @@
-<% @page_title = "#{@edition.work.title} (#{edition.description})" %>
+<% @page_title = "#{@edition.work.title} (#{@edition.description})" %>
 
 <p>
   Details of <%= @edition.work.title %> (<%= @edition.description %>), by
-  <%= "#{@edition.work.composer.first_name} #{@edition.composer.last_name}" %>
+  <%= "#{@edition.work.composer.first_name} #{@edition.work.composer.last_name}" %>
 </p>
 
 <table border="1">

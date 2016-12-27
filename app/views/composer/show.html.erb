@@ -1,11 +1,13 @@
 <% @page_title = "Works by #{@composer.first_name} #{@composer.last_name}" %>
 
+<h2><%= @page_title %></h2>
+
 <p>
   Click on any work to see all available editions of that work.
 </p>
 
 <ul>
-  <% @composer.each do |work| %>
+  <% @composer.works.each do |work| %>
     <li>
       <%=
         link_to(
