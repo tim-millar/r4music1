@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207130735) do
+ActiveRecord::Schema.define(version: 20170208130501) do
 
   create_table "composers", force: :cascade do |t|
     t.string   "first_name", limit: 255
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(version: 20170207130735) do
 
   add_index "editions", ["publisher_id"], name: "index_editions_on_publisher_id", using: :btree
   add_index "editions", ["work_id"], name: "index_editions_on_work_id", using: :btree
+
+  create_table "instruments", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "family",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "instruments_works", id: false, force: :cascade do |t|
+    t.integer "instrument_id", limit: 4
+    t.integer "work_id",       limit: 4
+  end
+
+  add_index "instruments_works", ["instrument_id"], name: "index_instruments_works_on_instrument_id", using: :btree
+  add_index "instruments_works", ["work_id"], name: "index_instruments_works_on_work_id", using: :btree
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name",       limit: 255
