@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208130501) do
+ActiveRecord::Schema.define(version: 20170216221055) do
 
   create_table "composers", force: :cascade do |t|
     t.string   "first_name", limit: 255
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20170208130501) do
     t.integer  "composer_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "kee",         limit: 255
+    t.string   "opus",        limit: 255
   end
 
   add_index "works", ["composer_id"], name: "index_works_on_composer_id", using: :btree
