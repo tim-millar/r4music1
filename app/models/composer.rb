@@ -1,6 +1,14 @@
 class Composer < ActiveRecord::Base
   has_many :works
 
+  def self.sales_rankings
+    Hash.new(0).tap do |rankings|
+      Work.sales_rankings.map do |work,sales|
+        rankings[work.composer.id] += sales
+      end
+    end
+  end
+
   def editions
     works.map { |work| work.editions }.flatten.uniq
   end

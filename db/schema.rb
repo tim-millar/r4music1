@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218220348) do
+ActiveRecord::Schema.define(version: 20170302233847) do
 
   create_table "composers", force: :cascade do |t|
     t.string   "first_name",  limit: 255
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20170218220348) do
     t.string   "description",  limit: 255
     t.integer  "year",         limit: 4
     t.float    "price",        limit: 24
-    t.integer  "work_id",      limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "publisher_id", limit: 4
@@ -45,7 +44,14 @@ ActiveRecord::Schema.define(version: 20170218220348) do
   end
 
   add_index "editions", ["publisher_id"], name: "index_editions_on_publisher_id", using: :btree
-  add_index "editions", ["work_id"], name: "index_editions_on_work_id", using: :btree
+
+  create_table "editions_works", id: false, force: :cascade do |t|
+    t.integer "edition_id", limit: 4, null: false
+    t.integer "work_id",    limit: 4, null: false
+  end
+
+  add_index "editions_works", ["edition_id", "work_id"], name: "index_editions_works_on_edition_id_and_work_id", using: :btree
+  add_index "editions_works", ["work_id", "edition_id"], name: "index_editions_works_on_work_id_and_edition_id", using: :btree
 
   create_table "instruments", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -88,12 +94,12 @@ ActiveRecord::Schema.define(version: 20170218220348) do
     t.datetime "updated_at",              null: false
     t.string   "kee",         limit: 255
     t.string   "opus",        limit: 255
+    t.integer  "year",        limit: 4
   end
 
   add_index "works", ["composer_id"], name: "index_works_on_composer_id", using: :btree
 
   add_foreign_key "editions", "publishers"
-  add_foreign_key "editions", "works"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "editions"
   add_foreign_key "works", "composers"
