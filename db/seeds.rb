@@ -10,18 +10,21 @@ composers = [
 Composer.create!(composers)
 
 works = [
-  { title: 'Sonata for Cello and Piano in F Major' },
-  { title: 'String Quartet' },
+  { title: 'Sonata for Cello and Piano in F Major', year: 1965 },
+  { title: 'String Quartet', year: 1997 },
 ]
 
 Work.create!(works)
 
+black_music = Publisher.create!(name: 'Black Music House', city: 'Gotham', country: "USA")
+ruby_tunes = Publisher.create!(name: 'RubyTunes', city: 'Shanghai', country: 'China')
+
 editions = [
-  { description: 'Facsimilie', publisher: 'Black Music House', year: 1998, price: 21.95 },
-  { description: 'Urtext', publisher: 'RubyTunes', year: 1977, price: 17.99 },
-  { description: 'Ed. Y.Matsumo', publisher: 'RubyTunes', year: 2001, price: 23.50 },
-  { description: '', publisher: 'Black Music House', year: 1995, price: 39.95 },
-  { description: 'Reprint', publisher: 'RubyTunes', year: 2011, price: 31.99 },
+  { description: 'Facsimilie', publisher: black_music, year: 1998, price: 21.95 },
+  { description: 'Urtext', publisher: ruby_tunes, year: 1977, price: 17.99 },
+  { description: 'Ed. Y.Matsumo', publisher: ruby_tunes, year: 2001, price: 23.50 },
+  { description: '', publisher: black_music, year: 1995, price: 39.95 },
+  { description: 'Reprint', publisher: ruby_tunes, year: 2011, price: 31.99 },
 ]
 
 Edition.create!(editions)

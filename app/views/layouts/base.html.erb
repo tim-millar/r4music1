@@ -8,6 +8,33 @@
   <body>
     <h1 class="banner">The R4R Music Store</h1>
     <%= @content_for_layout %>
+    <table>
+      <tr>
+	<td>
+	  <%= link_to(
+	    'Home',
+	    controller: 'main',
+	    action: 'welcome',
+	  ) %>
+	</td>
+	<% if @customer %>
+	  <td>
+	    <%= link_to(
+	      'View cart',
+	      controller: 'customer',
+	      action: 'view_cart',
+	    ) %>
+	  </td>
+	  <td>
+	    <%= link_to(
+	      'Log out',
+	      controller: 'customer',
+	      action: 'logout',
+	    ) %>
+	  </td>
+	<% end %>
+      </tr>
+    </table>
     <hr/>
     <p>Copyright &copy; 2016, R4RMusic</p>
   </body>
