@@ -47,6 +47,13 @@ class Customer < ActiveRecord::Base
     end
   end
 
+  def favourites(thing, options)
+    count = options[:count]
+    method_name = "#{thing}_rankings"
+    rankings = self.send(method_name)
+    rankings[0,count].compact
+  end
+
   private
 
   def comp_history
